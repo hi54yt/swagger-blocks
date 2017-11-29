@@ -6,6 +6,10 @@ module Swagger
           self.data[:items] = Swagger::Blocks::Nodes::ItemsNode.call(version: version, inline_keys: inline_keys, &block)
         end
 
+        def allOf(&block)
+          self.data[:allOf] = Swagger::Blocks::Nodes::AllOfNode.call(version: version, &block)
+        end
+
         def property(name, inline_keys = nil, &block)
           self.data[:properties] ||= Swagger::Blocks::Nodes::PropertiesNode.new
           self.data[:properties].version = version
